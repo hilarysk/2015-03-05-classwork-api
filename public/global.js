@@ -12,19 +12,37 @@
 
 
 
-
+//Variables
 
 var fish = new XMLHttpRequest();
 var ip = "httP://localhost:4567/";
 
+// for(var i = 0; i < links.length; i++) {
+//     links[i].addEventListener("click", doLink);
+//   }
+  //
+  // function doLink() {
+  //   OpenSend(this.method,this.id);
+  //
+  // }
+
+
+
+//a.innerHTML = message; --> this is how to get person name/etc. in-between div tags
+
+
+//Event actions
+
+fish.addEventListener("load", function(eventObject) {alert(this.response);});
+
+//Functions
+
 function openSend(method, path) {
   fish.open(method, ip+path);
-  fish.send();
-  return fish;
-  
+  fish.send();  
 }
 
 
-fish.addEventListener("load", function(eventObject) {alert(this.response); console.log(eventObject);});
+
 
 // loop through this.response and have the (for example) where div id=key, put value. Or something like that. 
