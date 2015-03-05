@@ -16,7 +16,15 @@ end
 get "/students" do
   students = Student.all
   
-  students_hash = students.map {|s| s.to_hash}
+  students_hash = []
+  
+  students.each do |object|
+     a = object.to_hash 
+     a[:ultra_wise?] = object.ultra_wise? #ultra_wise?: true
+     a[:can_drink?] = object.can_drink? #can_drink?: false
+     a[:github_link] = "http://github.com/#{object.github}"
+     students_hash << a
+   end
   students_hash.to_json
 end
 
@@ -59,14 +67,10 @@ get "/create" do
   student.insert
 end
 
-
-
 get "/ultrawise" do
   student = Student.find(params["id"])
   student.ultra_wise?.to_json 
 end
-
-
 
 get "/candrink" do
   student = Student.find(params["id"])
@@ -75,8 +79,6 @@ end
 
 
 # Afternoon Assignment:
-
-# - Add a route that returns if a particular student is ultra wise. And one for whether the student can drink.
 
 # - Change the application as needed so that the routes I wrote above return whether students can drink, whether they're ultra wise, and their GitHub *link* in the JSON response.
 
