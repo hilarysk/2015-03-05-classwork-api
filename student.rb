@@ -40,6 +40,14 @@ class Student
     @id = DATABASE.last_insert_row_id
   end
   
+  # Public: delete
+  #
+  # Delete Student record
+  
+  
+  def delete
+    DATABASE.execute("DELETE FROM students WHERE id = #{@id}")
+  end
   
   # Public: save
   #

@@ -49,9 +49,13 @@ post "/modify" do # ?id=2&name=Beth&github=fish
   modified_student_hash.to_json
 end
 
-# Afternoon Assignment:
 
-# - Add a route that modifies a student record. There's no need for a page that shows a form for editing. We're just working with request paths directly. (Use 'get' instead of 'post' to make it easier to check that things work. Once it's working, change it to 'post'.)
+get "/delete" do
+  student = Student.find(params["id"])
+  student.delete
+end
+
+# Afternoon Assignment:
 
 # - Add routes for creating and deleting students, too.
 
