@@ -35,7 +35,6 @@ get "/students/:id" do
   student_hash.to_json
 end
 
-
 post "/modify" do # ?id=2&name=Beth&github=fish
   original_student = Student.find(params["id"]) # object of existing record
   original_student_hash = original_student.to_hash_string
