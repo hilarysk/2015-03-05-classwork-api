@@ -59,6 +59,21 @@ get "/create" do
   student.insert
 end
 
+
+
+get "/ultrawise" do
+  student = Student.find(params["id"])
+  student.ultra_wise?.to_json 
+end
+
+
+
+get "/candrink" do
+  student = Student.find(params["id"])
+  student.can_drink?.to_json
+end
+
+
 # Afternoon Assignment:
 
 # - Add a route that returns if a particular student is ultra wise. And one for whether the student can drink.
