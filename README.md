@@ -7,6 +7,24 @@
 
 From the console, you should be able to use `XMLHttpRequest` to make requests to these paths and parse the responses as JSON, just like we went over together.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### DOM Exercises, for after.
 
 - Add links to various routes on the homepage.

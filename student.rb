@@ -6,6 +6,7 @@ class Student
     @name = options["name"]
     @age = options["age"]
     @github = options["github"]
+ 
   end
   
   def can_drink?
@@ -29,6 +30,44 @@ class Student
     results.map { |row_hash| self.new(row_hash) }
   end
   
+  # Public: insert
+  #
+  # Make new Student object
+  
+  
+  def insert
+    DATABASE.execute("INSERT INTO students (name, age, github) VALUES (?, ?, ?)", @name, @age, @github)
+    @id = DATABASE.last_insert_row_id
+  end
+  
+  
+  # Public: save
+  #
+  # Save modified student object
+  
+  
+  def save      
+    attributes = []
+                                                                                 
+    instance_variables.each do |i|                                               
+      attributes << i.to_s.delete("@")                                           
+    end     
+                                                                         
+                                                                                 
+    query_hash = {}                                                 
+                                                                                 
+    attributes.each do |a|        #each with object                                               
+      value = self.send(a)
+      query_hash[a] = value                                                       
+    end                                                                
+
+    query_hash.each do |key, value|
+      DATABASE.execute("UPDATE students SET #{key} = ? WHERE id = #{@id}", value)
+    end                                                                          
+  end
+  
+  
+  
   # Public: Get a single student from the database.
   #
   # s_id - Integer
@@ -47,6 +86,15 @@ class Student
       name: name,
       age: age,
       github: github
+    }
+  end
+  
+  def to_hash_string
+    {
+      "id"=> id,
+      "name"=> name,
+      "age"=> age,
+      "github"=> github
     }
   end
 end
