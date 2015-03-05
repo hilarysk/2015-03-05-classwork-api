@@ -73,8 +73,6 @@ end
 
 # Afternoon Assignment:
 
-# - Change the application as needed so that the routes I wrote above return whether students can drink, whether they're ultra wise, and their GitHub *link* in the JSON response.
-
 # From the console, you should be able to use `XMLHttpRequest` to make requests to these paths and parse the responses as JSON, just like we went over together.
 
 ## DOM Exercises
