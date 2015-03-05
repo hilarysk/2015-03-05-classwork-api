@@ -49,15 +49,17 @@ post "/modify" do # ?id=2&name=Beth&github=fish
   modified_student_hash.to_json
 end
 
-
 get "/delete" do
   student = Student.find(params["id"])
   student.delete
 end
 
-# Afternoon Assignment:
+get "/create" do
+  student = Student.new(params)
+  student.insert
+end
 
-# - Add routes for creating and deleting students, too.
+# Afternoon Assignment:
 
 # - Add a route that returns if a particular student is ultra wise. And one for whether the student can drink.
 
