@@ -97,6 +97,20 @@ class Student
     }
   end
   
+  
+  # Returns the object as a Hash.
+  def to_hash_all_info
+    {
+      id: id,
+      name: name,
+      age: age,
+      github: github,
+      ultra_wise?: ultra_wise?,
+      can_drink?: can_drink?,
+      github_link: "http://github.com/#{github}"
+    }
+  end
+  
   def to_hash_string
     {
       "id"=> id,

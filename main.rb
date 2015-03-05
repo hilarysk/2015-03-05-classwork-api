@@ -16,22 +16,16 @@ end
 get "/students" do
   students = Student.all
   
-  students_hash = []
-  
-  students.each do |object|
-     a = object.to_hash 
-     a[:ultra_wise?] = object.ultra_wise? #ultra_wise?: true
-     a[:can_drink?] = object.can_drink? #can_drink?: false
-     a[:github_link] = "http://github.com/#{object.github}"
-     students_hash << a
+  students_array = students.map do |object|
+     object.to_hash_all_info 
    end
-  students_hash.to_json
+  students_array.to_json
 end
 
 get "/students/:id" do
   student = Student.find(params[:id])
 
-  student_hash = student.to_hash
+  student_hash = student.to_hash_all_info
   student_hash.to_json
 end
 
