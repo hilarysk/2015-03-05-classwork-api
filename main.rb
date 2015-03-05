@@ -28,6 +28,7 @@ get "/students" do
   students_hash.to_json
 end
 
+
 get "/students/:id" do
   student = Student.find(params[:id])
 
