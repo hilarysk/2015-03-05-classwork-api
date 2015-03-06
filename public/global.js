@@ -31,26 +31,48 @@ var singleStudent = function(eventObject){
 }
 
 var allStudents = function(eventObject){
-  var responseArray = this.response;
-  var responseHashes = responseArray.substring(1, this.response.length-1);
-  var objects = JSON.parse(responseHashes);
-  // for (var key in objects) {
-//     if (objects.hasOwnProperty(key)) {
-//       alert(key + " -> " + p[key]);
-//     }
-//   }
-//
-//
-//
-//
-//
-  // for (i = 0; i < objects.length; i ++){
-  //
-  //   var p = document.createElement("P");
-  //   var txt = document.createTextNode(objects[i]);
-  //   p.appendChild(txt);
-  //   document.getElementById("all_students").appendChild(p);
-  // }
+  var objects = JSON.parse(this.response);
+  
+  for (i = 0; i < objects.length; i ++){
+    var br = document.createElement("br"); //<br>
+    var br2 = document.createElement("br"); //<br>    var br2 = document.createElement("br"); //<br>
+    var br3 = document.createElement("br"); //<br>
+    var br4 = document.createElement("br"); //<br>
+    var aTag = document.createElement('a');
+    var list = document.createElement("li"); //<li></li>
+    var span = document.createElement("span"); //<span></span>
+    var p = document.createElement("p"); //<p></p>
+    
+    // Create lines of text
+    
+    // Could refactor to put the action in place of the variable in append call, but then gets very hard to read.
+    
+    var studentName = document.createTextNode("Name: " + objects[i].name); 
+    var studentAge = document.createTextNode("Age: " + objects[i].age);
+    var studentGithub = document.createTextNode("Github: ");
+    var studentGithubLink = document.createTextNode("Github link: " + objects[i].github_link);
+    var studentCanDrink = document.createTextNode("Can drink?: " + objects[i].can_drink);
+    var studentIsWise = document.createTextNode("Is ultra-wise?: " + objects[i].ultra_wise);
+    
+    //Create formatting
+    
+    aTag.setAttribute('href', objects[i].github_link);
+    aTag.innerHTML = objects[i].github;
+    
+    list.appendChild(span.appendChild(studentName));
+    list.appendChild(br);
+    list.appendChild(span.appendChild(studentAge));
+    list.appendChild(br2);
+    list.appendChild(span.appendChild(studentGithub));
+    list.appendChild(aTag); //github  name and link
+    list.appendChild(br3);
+    list.appendChild(span.appendChild(studentCanDrink));
+    list.appendChild(br4);
+    list.appendChild(span.appendChild(studentIsWise));
+    list.appendChild(p)
+    
+    document.getElementById("all_students").appendChild(list);
+  }
   
 }
 

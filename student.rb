@@ -105,8 +105,8 @@ class Student
       name: name,
       age: age,
       github: github,
-      ultra_wise?: ultra_wise?,
-      can_drink?: can_drink?,
+      ultra_wise: ultra_wise?,
+      can_drink: can_drink?,
       github_link: "http://github.com/#{github}"
     }
   end
