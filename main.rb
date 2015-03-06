@@ -8,8 +8,8 @@ DATABASE.results_as_hash = true
 
 require_relative "student"
 
-get "/" do
-  
+get "/home" do
+  @all_students = Student.all
   erb :homepage
 end
 
@@ -22,7 +22,7 @@ get "/students" do
   students_array.to_json
 end
 
-get "/students/:id" do
+post "/student" do
   student = Student.find(params[:id])
 
   student_hash = student.to_hash_all_info
@@ -69,16 +69,3 @@ get "/candrink" do
   student = Student.find(params["id"])
   student.can_drink?.to_json
 end
-
-
-# Afternoon Assignment:
-
-# From the console, you should be able to use `XMLHttpRequest` to make requests to these paths and parse the responses as JSON, just like we went over together.
-
-## DOM Exercises
-
-# - Add links to various routes on the homepage.
-# - Clicking a link should create an `XMLHttpRequest` to that path.
-# - Display the result in some elegant way in an alert to the user.
-# - Change your code so that the result displays on the page somewhere instead.
-# - Some of the routes above change information in the database and therefore need user-submitted information. Those are harder to implement, so save them as a bonus for the end. (Look into FormData.)

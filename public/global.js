@@ -12,19 +12,50 @@
 
 
 
-
+//Variables
 
 var fish = new XMLHttpRequest();
-var ip = "httP://localhost:4567/";
+
+var ip = "http://localhost:4567/";
+
+var singleStudent = function(eventObject){
+  var object = JSON.parse(this.response);
+  document.getElementById("name").innerHTML = object.name;
+  document.getElementById("age").innerHTML = object.age;
+  document.getElementById("github").innerHTML = object.github;
+  document.getElementById("github_link").innerHTML = object.github_link;
+  document.getElementById("drink").innerHTML = object.can_drink;
+  document.getElementById("wise").innerHTML = object.ultra_wise;
+}
+
+//Event actions
+
+// fish.addEventListener("load", function(eventObject) {
+//   var object = JSON.parse(this.response);
+//   document.getElementById("name").innerHTML = object.name;
+//   document.getElementById("age").innerHTML = object.age;
+//   document.getElementById("github").innerHTML = object.github;
+//   document.getElementById("github_link").innerHTML = object.github_link;
+//   document.getElementById("drink").innerHTML = object.can_drink;
+//   document.getElementById("wise").innerHTML = object.ultra_wise;
+// });
+
+
+//Functions
 
 function openSend(method, path) {
   fish.open(method, ip+path);
-  fish.send();
-  return fish;
-  
+  fish.send();  
+}
+
+function seeSpecificStudent() {
+  var formElement = document.getElementById("seeSpecificStudentForm");
+  var req = new XMLHttpRequest;
+  req.open("post", "http://localhost:4567/student");
+  req.send(new FormData(formElement));
+  req.addEventListener("load", singleStudent, false);  
 }
 
 
-fish.addEventListener("load", function(eventObject) {alert(this.response); console.log(eventObject);});
 
 // loop through this.response and have the (for example) where div id=key, put value. Or something like that. 
