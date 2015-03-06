@@ -20,26 +20,39 @@ var ip = "http://localhost:4567/";
 
 var singleStudent = function(eventObject){
   var object = JSON.parse(this.response);
+  document.getElementById("find_student").style.visibility = "visible";
   document.getElementById("name").innerHTML = object.name;
   document.getElementById("age").innerHTML = object.age;
   document.getElementById("github").innerHTML = object.github;
   document.getElementById("github_link").innerHTML = object.github_link;
+  document.getElementById("github_url").href = object.github_link;
   document.getElementById("drink").innerHTML = object.can_drink;
   document.getElementById("wise").innerHTML = object.ultra_wise;
 }
 
-//Event actions
-
-// fish.addEventListener("load", function(eventObject) {
-//   var object = JSON.parse(this.response);
-//   document.getElementById("name").innerHTML = object.name;
-//   document.getElementById("age").innerHTML = object.age;
-//   document.getElementById("github").innerHTML = object.github;
-//   document.getElementById("github_link").innerHTML = object.github_link;
-//   document.getElementById("drink").innerHTML = object.can_drink;
-//   document.getElementById("wise").innerHTML = object.ultra_wise;
-// });
-
+var allStudents = function(eventObject){
+  var responseArray = this.response;
+  var responseHashes = responseArray.substring(1, this.response.length-1);
+  var objects = JSON.parse(responseHashes);
+  // for (var key in objects) {
+//     if (objects.hasOwnProperty(key)) {
+//       alert(key + " -> " + p[key]);
+//     }
+//   }
+//
+//
+//
+//
+//
+  // for (i = 0; i < objects.length; i ++){
+  //
+  //   var p = document.createElement("P");
+  //   var txt = document.createTextNode(objects[i]);
+  //   p.appendChild(txt);
+  //   document.getElementById("all_students").appendChild(p);
+  // }
+  
+}
 
 //Functions
 
@@ -56,6 +69,9 @@ function seeSpecificStudent() {
   req.addEventListener("load", singleStudent, false);  
 }
 
-
-
-// loop through this.response and have the (for example) where div id=key, put value. Or something like that. 
+function seeAllStudents() {
+  var request = new XMLHttpRequest;
+  request.open("get", "http://localhost:4567/students");
+  request.send();
+  request.addEventListener("load", allStudents, false); 
+}
