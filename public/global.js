@@ -15,19 +15,30 @@
 //Variables
 
 var fish = new XMLHttpRequest();
+
 var ip = "http://localhost:4567/";
 
-//Event actions
-
-fish.addEventListener("load", function(eventObject) {
+var singleStudent = function(eventObject){
   var object = JSON.parse(this.response);
   document.getElementById("name").innerHTML = object.name;
   document.getElementById("age").innerHTML = object.age;
   document.getElementById("github").innerHTML = object.github;
   document.getElementById("github_link").innerHTML = object.github_link;
-  document.getElementById("drink").innerHTML = object.can_drink?;
-  document.getElementById("wise").innerHTML = object.ultra_wise?;
-});
+  document.getElementById("drink").innerHTML = object.can_drink;
+  document.getElementById("wise").innerHTML = object.ultra_wise;
+}
+
+//Event actions
+
+// fish.addEventListener("load", function(eventObject) {
+//   var object = JSON.parse(this.response);
+//   document.getElementById("name").innerHTML = object.name;
+//   document.getElementById("age").innerHTML = object.age;
+//   document.getElementById("github").innerHTML = object.github;
+//   document.getElementById("github_link").innerHTML = object.github_link;
+//   document.getElementById("drink").innerHTML = object.can_drink;
+//   document.getElementById("wise").innerHTML = object.ultra_wise;
+// });
 
 
 //Functions
@@ -37,6 +48,13 @@ function openSend(method, path) {
   fish.send();  
 }
 
+function seeSpecificStudent() {
+  var formElement = document.getElementById("seeSpecificStudentForm");
+  var req = new XMLHttpRequest;
+  req.open("post", "http://localhost:4567/student");
+  req.send(new FormData(formElement));
+  req.addEventListener("load", singleStudent, false);  
+}
 
 
 

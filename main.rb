@@ -22,7 +22,7 @@ get "/students" do
   students_array.to_json
 end
 
-get "/students/:id" do
+post "/student" do
   student = Student.find(params[:id])
 
   student_hash = student.to_hash_all_info
