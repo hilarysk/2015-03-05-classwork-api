@@ -20,7 +20,7 @@ var ip = "http://localhost:4567/";
 
 var singleStudent = function(eventObject){
   var object = JSON.parse(this.response);
-  document.getElementById("find_student").style.visibility = "visible";
+  document.getElementById("find_student").style.display = "block";
   document.getElementById("name").innerHTML = object.name;
   document.getElementById("age").innerHTML = object.age;
   document.getElementById("github").innerHTML = object.github;
@@ -44,6 +44,18 @@ var allStudents = function(eventObject){
     var p = document.createElement("p"); //<p></p>
     
     // Create lines of text
+    
+    
+    
+    var person = '<strong>Name:</strong>' + objects[i].name + '<br>' + 
+                  "<strong>Age:</strong> " + objects[i].age + '<br>' + 
+              
+                  
+    list.innerHTML = person;
+    
+    
+    
+    
     
     // Could refactor to put the action in place of the variable in append call, but then gets very hard to read.
     
@@ -69,7 +81,7 @@ var allStudents = function(eventObject){
     list.appendChild(span.appendChild(studentCanDrink));
     list.appendChild(br4);
     list.appendChild(span.appendChild(studentIsWise));
-    list.appendChild(p)
+    list.appendChild(p);
     
     document.getElementById("all_students").appendChild(list);
   }
@@ -84,10 +96,12 @@ function openSend(method, path) {
 }
 
 function seeSpecificStudent() {
-  var formElement = document.getElementById("seeSpecificStudentForm");
+  var studentID = document.getElementById("seeSpecificStudentForm");
   var req = new XMLHttpRequest;
   req.open("post", "http://localhost:4567/student");
-  req.send(new FormData(formElement));
+
+  req.send(new FormData(studentID));
+
   req.addEventListener("load", singleStudent, false);  
 }
 
