@@ -15,25 +15,20 @@
 //Variables
 
 var fish = new XMLHttpRequest();
-var ip = "httP://localhost:4567/";
-
-// for(var i = 0; i < links.length; i++) {
-//     links[i].addEventListener("click", doLink);
-//   }
-  //
-  // function doLink() {
-  //   OpenSend(this.method,this.id);
-  //
-  // }
-
-
-
-//a.innerHTML = message; --> this is how to get person name/etc. in-between div tags
-
+var ip = "http://localhost:4567/";
 
 //Event actions
 
-fish.addEventListener("load", function(eventObject) {alert(this.response);});
+fish.addEventListener("load", function(eventObject) {
+  var object = JSON.parse(this.response);
+  document.getElementById("name").innerHTML = object.name;
+  document.getElementById("age").innerHTML = object.age;
+  document.getElementById("github").innerHTML = object.github;
+  document.getElementById("github_link").innerHTML = object.github_link;
+  document.getElementById("drink").innerHTML = object.can_drink?;
+  document.getElementById("wise").innerHTML = object.ultra_wise?;
+});
+
 
 //Functions
 

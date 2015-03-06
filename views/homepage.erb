@@ -8,15 +8,15 @@
 <button onclick="openSend('get', 'students')">See all students</button><br><br>
 
 <p>Access information:</p>
-<form action="/students/:id" action="">
-  <input type="number" style="width:175px" placeholder="The student's ID goes here" max="<%= @all_students.length %>" min="1"></input>
-  <button value="Submit" onclick="openSend('get', 'students/id somehow??)">Submit</button>
+<form>
+  <input id="value_find_student" type="number" style="width:175px" placeholder="The student's ID goes here" max="<%= @all_students.length %>" min="1"></input>
+  <button id="find_student_button" value="Submit">Submit</button>
 </form>
 
 <br><br>
   
 
-<ul style="visibility:hidden" id="find_student">
+<ul id="find_student">
   <li>Name: <div id="name"></div></li>
   <li>Age: <div id="age"></div></li>
   <li>Github username: <div id="github"></div></li>

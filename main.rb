@@ -8,7 +8,7 @@ DATABASE.results_as_hash = true
 
 require_relative "student"
 
-get "/" do
+get "/home" do
   @all_students = Student.all
   erb :homepage
 end
